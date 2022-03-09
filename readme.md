@@ -3,4 +3,10 @@
 ## 1. learnyouhtml
 ## 2. portfolio
 
-![alt text for screen readers](./portfolio/images/McKinsey_Portfolio.png "Text to show on mouseover")
+![Portfolio webpage screenshot](./portfolio/images/McKinsey_Portfolio.png "Portfolio webpage image")
+
+## 3. eShop
+
+![eshop webpage screenshot 1](./eShop/images/eshop1.png "eshop webpage image 1")
+
+![eshop webpage screenshot 2](./eShop/images/eshop2.png "eshop webpage image 2")
