@@ -1,0 +1,70 @@
+body {
+    padding:0px;
+    margin:0px;
+}
+
+header {
+    margin-top:80px;
+    margin-left:80px;
+}
+
+header h1 {
+    width:400px;
+    height:60px;
+    text-align: center;
+    border: 2px black solid;
+    padding-top:12px;
+    background-color: black;
+    color:white;
+    margin:0px;
+}
+
+header hr {
+    width:1360px;
+    margin-top:1px;
+    margin-left:0px;
+    border-top: 4px solid black;
+}
+
+main {
+    display:flex;
+}
+
+section {
+    margin-top:50px;
+    margin-left:80px;
+    border: 2px solid rgb(102, 99, 99);
+    text-align: center;
+}
+
+section h2 {
+    margin-top:30px;
+}
+
+section p {
+   width:250px;
+   padding-left:75px;
+   padding-right:75px;
+   font-size: 20px;
+}
+
+section img {
+    width:400px;
+    height:300px;
+}
+
+section button {
+    margin-top:20px;
+    margin-bottom: 50px;
+    height:40px;
+    width:250px;
+    background-color: white;
+    color:grey;
+    border: 2px solid rgb(102, 99, 99);
+    text-align: center;
+    padding-left:10px;
+}
+
+button i{
+    margin-right:15px;
+}
