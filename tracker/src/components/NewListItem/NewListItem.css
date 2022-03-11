@@ -1,0 +1,19 @@
+.addNewList {
+    margin-top:50px;
+    margin-left:550px;
+    border: 2px solid black;
+    width:30%;
+    height:350px;  
+}
+
+.inputField {
+    padding-top:50px;
+}
+
+.inputField input {
+    width:200px;
+}
+
+.addNewList button {
+    margin-top: 50px;
+}

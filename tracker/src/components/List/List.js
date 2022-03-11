@@ -1,14 +1,20 @@
 import ListItem from '../ListItem/ListItem';
 import './List.css';
+import Dropdown from '../Dropdown/Dropdown';
 
 const List = (props) => {
-    const addListItems = props.list.map((eachItem, index) => {
-        return <ListItem key={index} title={eachItem.title} description={eachItem.description}></ListItem>;
-    });
+
     return (
-        <div className="listContainer">
-            {addListItems}
-        </div>  
+        <div>
+            <div className="listDropdown">
+                <Dropdown list={props.mainList} onClick={props.onDropdownClick}></Dropdown>
+            </div>
+            <div className="listContainer">
+                {props.filteredList.map((eachItem) => { 
+                    return <ListItem key={eachItem.id} title={eachItem.title} description={eachItem.description} hours={eachItem.hours}>
+                </ListItem>;})}
+            </div>  
+        </div>
     )   
 }
 

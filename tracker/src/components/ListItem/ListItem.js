@@ -10,6 +10,7 @@ const ListItem = (props) => {
         <div className="listItemContainer">
             <h1>{currentTitle}</h1>
             <p>{props.description}</p>
+            <p>Number of hours : {props.hours}</p>
             <button onClick={titleChangeHandler}>Change Title</button>
         </div>
     )
