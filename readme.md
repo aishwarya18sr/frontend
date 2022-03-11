@@ -1,6 +1,10 @@
 # Frontend Exercises
 
 ## 1. learnyouhtml
+
+![learnyouhtml screenshot](./learnyouhtml/learnyouhtml.png "learnyouhtml image")
+
+
 ## 2. portfolio
 
 ![Portfolio webpage screenshot](./portfolio/images/McKinsey_Portfolio.png "Portfolio webpage image")
