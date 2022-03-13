@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 const EditTaskItem = (props) => {
-    const [taskName, setTaskName] = useState('');
+    const [taskName, setTaskName] = useState(props.title);
 
     const inputHandler = (event) => {
         setTaskName(event.target.value);
