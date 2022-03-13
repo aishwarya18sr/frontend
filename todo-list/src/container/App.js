@@ -89,14 +89,14 @@ function App() {
 
   const addListItemHandler = (listName) => {
     const newListItem = {
-      id:initialLists.length + 1,
+      id: currentList.length + 1,
       listName,
       tasks:[],
     }
     const updatedList = [
-        ...initialLists,newListItem
+        ...currentList,newListItem
     ]
-    setCurrentList(updatedList);
+    setCurrentList(()=>updatedList);
     setCurrentStatePage('List');
   }
 
@@ -170,13 +170,13 @@ function App() {
         {(currentStatePage === 'List') ?
             <List lists={currentList} onChangeState={changeStateHandler} onMoveToTask={moveToTaskHandler}></List> : 
             (currentStatePage === 'NewListItem') ?
-            <NewOrUpdateItem initialItemValue='' onClick={addListItemHandler}></NewOrUpdateItem> :
+            <NewOrUpdateItem title='Add List' initialItemValue='' onClick={addListItemHandler}></NewOrUpdateItem> :
             (currentStatePage === 'Task') ? 
             <Task list={currentListItem} onCreateTask={changeStateHandler} onEditTaskItem={moveToEditTaskHandler}></Task> :
             (currentStatePage === 'NewTaskItem') ?
-            <NewOrUpdateItem initialItemValue='' onClick={createTaskItemHandler}></NewOrUpdateItem> :
+            <NewOrUpdateItem title='Add Task' initialItemValue='' onClick={createTaskItemHandler}></NewOrUpdateItem> :
             (currentStatePage === 'EditTaskItem') ?
-            <NewOrUpdateItem initialItemValue={currentTaskItem.name} onClick={editTaskItemHandler}></NewOrUpdateItem> :
+            <NewOrUpdateItem title='Update Task' initialItemValue={currentTaskItem.name} onClick={editTaskItemHandler}></NewOrUpdateItem> :
             <></>
         }
     </div>

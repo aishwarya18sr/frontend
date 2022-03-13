@@ -1,11 +1,14 @@
 import './Button.css'
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faPlus, faPencil} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Button = ({icon, text, onClick, statePage}) => {
+const Button = ({icon, text, onClick, args}) => {
     const getIcon = () => {
         if(icon==='plus') {       
-            return <FontAwesomeIcon icon={faPlus} />
+            return <FontAwesomeIcon id='plus' icon={faPlus} />
+        }
+        else if(icon==='pencil') {
+            return <FontAwesomeIcon icon={faPencil} />
         }
         else {
             return
@@ -13,16 +16,22 @@ const Button = ({icon, text, onClick, statePage}) => {
     }
 
     const getText = () => {
-        return <p>{text}</p>
+        if(text===null) {
+            return
+        }
+        return <p id='text'>{text}</p>
     }
 
     const clickHandler = (event) => {
-        if(onClick)
-            onClick(statePage);
+        if(onClick && args===null) {
+            onClick();
+        }
+        else if(onClick)
+            onClick(args);
     }
 
     return (
-        <div className="button">
+        <div className="buttonContainer">
             <button onClick={clickHandler}>{getIcon()}{getText()}</button>
         </div>
     )

@@ -1,27 +1,14 @@
 import './TaskItem.css'
-import {faPencil} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '../Button/Button';
 
-const Button = ({id, text, onEditTaskItem}) => {
-    const getIcon = () => {   
-        return <FontAwesomeIcon icon={faPencil} />
-    }
-
-    const getText = () => {
-        return <p>{text}</p>
-    }
-
-    const clickHandler = (event) => {
-        event.preventDefault();
-        if(onEditTaskItem)
-        onEditTaskItem(id);
-    }
+const TaskItem = ({id, text, onEditTaskItem}) => {
 
     return (
-        <div className="button">
-            <button onClick={clickHandler}>{getText()}{getIcon()}</button>
+        <div>
+            <p>{text}</p>
+            <Button icon='pencil' text={null} onClick={onEditTaskItem} args={id}></Button>
         </div>
     )
 }
 
-export default Button;
+export default TaskItem;

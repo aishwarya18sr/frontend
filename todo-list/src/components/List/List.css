@@ -1,4 +1,29 @@
+.listContainer {
+    background-color: rgb(223, 207, 238);
+    height:860px;
+}
+
+header {
+    background-color: rgb(124, 52, 172);
+    height:200px;
+}
+
+Button {
+    margin-top:5px;
+    margin-left:1150px;
+}
+
+#heading {
+    padding:0px;
+    margin-right:1100px;
+    margin-top:80px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
 .listItemContainer {
+    margin-top:10px;
     display:flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }

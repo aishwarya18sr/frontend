@@ -15,7 +15,7 @@ const Task = (props) => {
     return (
         <div className="taskContainer">
             <header>
-                <Button icon='plus' text='CREATE TASK' onClick={onClickHandler}></Button>
+                <Button icon='plus' text='CREATE TASK' onClick={onClickHandler} args={null}></Button>
             </header>
             <main>
                 <p>{props.list.listName}</p>
