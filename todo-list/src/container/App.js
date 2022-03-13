@@ -1,9 +1,7 @@
 import './App.css';
 import List from '../components/List/List';
-import NewListItem from '../components/NewListItem/NewListItem';
 import Task from '../components/Task/Task';
-import NewTaskItem from '../components/NewTaskItem/NewTaskItem';
-import EditTaskItem from '../components/EditTaskItem/EditTaskItem';
+import NewOrUpdateItem from '../components/NewOrUpdateItem/NewOrUpdateItem';
 import {useState} from 'react';
 
 const initialLists = [
@@ -172,13 +170,13 @@ function App() {
         {(currentStatePage === 'List') ?
             <List lists={currentList} onChangeState={changeStateHandler} onMoveToTask={moveToTaskHandler}></List> : 
             (currentStatePage === 'NewListItem') ?
-            <NewListItem addListItem={addListItemHandler}></NewListItem> :
+            <NewOrUpdateItem initialItemValue='' onClick={addListItemHandler}></NewOrUpdateItem> :
             (currentStatePage === 'Task') ? 
             <Task list={currentListItem} onCreateTask={changeStateHandler} onEditTaskItem={moveToEditTaskHandler}></Task> :
             (currentStatePage === 'NewTaskItem') ?
-            <NewTaskItem onCreateTaskItem={createTaskItemHandler}></NewTaskItem> :
+            <NewOrUpdateItem initialItemValue='' onClick={createTaskItemHandler}></NewOrUpdateItem> :
             (currentStatePage === 'EditTaskItem') ?
-            <EditTaskItem title={currentTaskItem.name} onEditTaskItem={editTaskItemHandler}></EditTaskItem> :
+            <NewOrUpdateItem initialItemValue={currentTaskItem.name} onClick={editTaskItemHandler}></NewOrUpdateItem> :
             <></>
         }
     </div>
