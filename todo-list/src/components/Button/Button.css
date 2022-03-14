@@ -1,9 +1,8 @@
 .buttonContainer {
     display:flex;
-    padding-top: 20px;
 }
 
-button {
+.commonbutton {
     padding-top:0px;
     margin:0px;
     display: flex;
@@ -16,16 +15,16 @@ button {
     justify-content: center;
 }
 
-#text {
+.buttonText {
     padding-right:15px;
     margin:0px;
     font-size: 15px;
 }
 
-#plus {
+.buttonPlus {
     padding-right:15px;
 }
 
-button:hover {
+.commonbutton:hover {
     background-color: rgb(223, 207, 238);
 }

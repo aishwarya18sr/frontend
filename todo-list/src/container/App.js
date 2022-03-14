@@ -115,8 +115,16 @@ function App() {
         const modifiedListItem = {};
         modifiedListItem.id = eachList.id;
         modifiedListItem.listName = eachList.listName;
+        let nextId;
+        if(eachList.tasks.length===0)
+        {
+          nextId = 1;
+        }
+        else {
+          nextId = eachList.tasks[eachList.tasks.length] + 1;
+        }
         const addedTask = {
-          id: eachList.tasks.length + 1,
+          id: nextId,
           name: taskName,
         };
         const modifiedTasks = [...eachList.tasks, addedTask];
@@ -131,7 +139,9 @@ function App() {
 
   const moveToEditTaskHandler = (id) => {
     setCurrentTaskId(()=>id);
-    setcurrentTaskItem(()=>currentListItem.tasks[id-1]);
+    //setcurrentTaskItem(()=>currentListItem.tasks[id-1]);
+    const tempTaskItem = currentListItem.tasks.filter((eachTask) => eachTask.id === id);
+    setcurrentTaskItem(tempTaskItem[0]);
     setCurrentStatePage('EditTaskItem')
 }
 
@@ -165,18 +175,43 @@ function App() {
      setCurrentStatePage('Task');
   }
 
+  const deleteTaskHandler = (id) => {
+    const modifiedList = currentList.map((eachList) => {
+      if(eachList.id !== currentListId) {
+        return eachList;
+      }
+      else {
+        const modifiedListItem = {};
+        modifiedListItem.id = eachList.id;
+        modifiedListItem.listName = eachList.listName;
+        const tempModifiedTasks = eachList.tasks.map((eachTask) => {
+            if(eachTask.id !== id) {
+              return eachTask;
+            }
+            return null;
+        });
+        const modifiedTasks = tempModifiedTasks.filter((eachTask)=>eachTask!==null);
+        modifiedListItem.tasks = modifiedTasks;
+        return modifiedListItem;
+      }
+    })
+     setCurrentList(()=>modifiedList);
+     setCurrentListItem(()=>modifiedList[currentListId-1]);
+     setCurrentStatePage('Task');
+  }
+
   return (
     <div className="App">
         {(currentStatePage === 'List') ?
             <List lists={currentList} onChangeState={changeStateHandler} onMoveToTask={moveToTaskHandler}></List> : 
             (currentStatePage === 'NewListItem') ?
-            <NewOrUpdateItem title='Add List' initialItemValue='' onClick={addListItemHandler}></NewOrUpdateItem> :
+            <NewOrUpdateItem title='Add List' initialItemValue='' onSubmitClick={addListItemHandler} onCancelClick={changeStateHandler} previousPage='List'></NewOrUpdateItem> :
             (currentStatePage === 'Task') ? 
-            <Task list={currentListItem} onCreateTask={changeStateHandler} onEditTaskItem={moveToEditTaskHandler}></Task> :
+            <Task list={currentListItem} onCreateTask={changeStateHandler} onEditTaskItem={moveToEditTaskHandler} onDeleteTaskItem={deleteTaskHandler}></Task> :
             (currentStatePage === 'NewTaskItem') ?
-            <NewOrUpdateItem title='Add Task' initialItemValue='' onClick={createTaskItemHandler}></NewOrUpdateItem> :
+            <NewOrUpdateItem title='Add Task' initialItemValue='' onSubmitClick={createTaskItemHandler} onCancelClick={changeStateHandler} previousPage='Task'></NewOrUpdateItem> :
             (currentStatePage === 'EditTaskItem') ?
-            <NewOrUpdateItem title='Update Task' initialItemValue={currentTaskItem.name} onClick={editTaskItemHandler}></NewOrUpdateItem> :
+            <NewOrUpdateItem title='Update Task' initialItemValue={currentTaskItem.name} onSubmitClick={editTaskItemHandler} onCancelClick={changeStateHandler} previousPage='Task'></NewOrUpdateItem> :
             <></>
         }
     </div>

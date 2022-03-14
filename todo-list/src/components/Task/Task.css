@@ -1,0 +1,40 @@
+.taskContainer {
+    height:770px;
+    width:1512px;
+    padding-top: 100px;
+    background: linear-gradient(0deg, rgb(223, 207, 238) 50%, rgb(124, 52, 172) 50%);
+}
+
+.taskButton {
+    margin-left:1190px;
+    padding:0px;
+}
+
+.taskMain {
+    width:1200px;
+    height:700px;
+    margin-left:200px;
+    margin-top:50px;
+    background-color: white;
+}
+
+.taskText {
+    display:flex;
+    justify-content: flex-start;
+    padding-top:60px;
+    padding-left:100px;
+    font-size: 30px;
+    margin:0px;
+}
+
+.taskItemContainer {
+    width:1000px;
+    height:500px;
+    background-color: rgb(223, 207, 238);
+    margin-top:20px;
+    margin-left:100px;
+    padding-top: 40px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

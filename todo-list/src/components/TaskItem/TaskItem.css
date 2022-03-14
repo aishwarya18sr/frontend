@@ -1,0 +1,18 @@
+.taskItem {
+    display: flex;
+    justify-content: space-between;
+    width:400px;
+    padding-left: 250px;
+}
+
+.taskItemText {
+    font-size: 20px;
+    width:400px;
+    text-align: center;
+}
+
+.taskItemIcon {
+    padding:20px;
+    margin:20px;
+}
+

@@ -5,14 +5,14 @@
     background: linear-gradient(0deg, rgb(223, 207, 238) 50%, rgb(124, 52, 172) 50%);
 }
 
-.title {
+.itemTitle {
     padding-top: 100px;
     display:flex;
     padding-left:60px;
     font-size: 35px;
 }
 
-.inputFields {
+.itemInputFields {
     margin-top: 100px;
     margin-left: 170px;
     height:450px;
@@ -21,7 +21,7 @@
     margin-bottom: 200px;
 }
 
-#itemName {
+.itemName {
     color: black;
     outline: none;
     outline-style: none;
@@ -38,26 +38,48 @@
     align-items: center;
 }
 
-.buttonContainer {
+.itemButtonContainer {
     display: flex;
     padding-left:5px;
     padding-top:70px;
 }
 
-.submit {
+.itemSubmit {
     padding:0px;
     margin:0px;
     background-color: white;
     font-size: 25px;
     color: rgb(124, 52, 172);
+    display: flex;
+    width:200px;
+    border:0px;
+    height:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.cancel {
+.itemCancel {
     padding:0px;
     margin:0px;
     background-color: white;
     font-size: 25px;
     color:rgb(95, 90, 90);
+    display: flex;
+    width:200px;
+    border:0px;
+    height:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemSubmit:hover {
+    background-color: rgb(223, 207, 238);
+}
+
+.itemCancel:hover {
+    background-color: rgb(223, 207, 238);
 }
 
 

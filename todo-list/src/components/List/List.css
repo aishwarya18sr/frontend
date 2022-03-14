@@ -3,17 +3,17 @@
     height:860px;
 }
 
-header {
+.listHeader {
     background-color: rgb(124, 52, 172);
     height:200px;
 }
 
-Button {
-    margin-top:5px;
+.listHeader Button {
+    margin-top:70px;
     margin-left:1150px;
 }
 
-#heading {
+.listHeading {
     padding:0px;
     margin-right:1100px;
     margin-top:80px;
