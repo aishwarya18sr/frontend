@@ -14,21 +14,20 @@ const NewOrUpdateItem = (props) => {
     }
 
     const cancelClickHandler = (event) => {
-        console.log(props.previousPage);
         props.onCancelClick(props.previousPage);
     }
 
     return (
         <div className="newOrUpdateItem">  
-            <form className='itemInputFields'>     
+            <div className='itemInputFields'>     
                 <p className="itemTitle">{props.title}</p>
                 <input className="itemName" type="text" value={itemName} onChange={inputHandler}></input>
                 <div className="itemButtonContainer">
-                    <button className="itemSubmit" onClick={submitClickHandler} >Submit</button>
+                    <button className="itemSubmit" onClick={submitClickHandler}>Submit</button>
                     {/* <Button icon={null} text='Submit' onClick={props.onClick} args={itemName} ></Button> */}
                     <button className="itemCancel" onClick={cancelClickHandler}>Cancel</button>
                 </div>
-            </form>
+            </div>
         </div>
     )
 }

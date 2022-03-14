@@ -81,8 +81,6 @@ function App() {
   const [currentListItem, setCurrentListItem] = useState([]);
   const [currentTaskItem, setcurrentTaskItem] = useState([]);
 
-
-
   const changeStateHandler = (newState) => {
     setCurrentStatePage(newState);
   }
@@ -115,16 +113,8 @@ function App() {
         const modifiedListItem = {};
         modifiedListItem.id = eachList.id;
         modifiedListItem.listName = eachList.listName;
-        let nextId;
-        if(eachList.tasks.length===0)
-        {
-          nextId = 1;
-        }
-        else {
-          nextId = eachList.tasks[eachList.tasks.length] + 1;
-        }
         const addedTask = {
-          id: nextId,
+          id: ((eachList.tasks.length===0)?1:eachList.tasks[eachList.tasks.length-1].id + 1),
           name: taskName,
         };
         const modifiedTasks = [...eachList.tasks, addedTask];
@@ -141,7 +131,7 @@ function App() {
     setCurrentTaskId(()=>id);
     //setcurrentTaskItem(()=>currentListItem.tasks[id-1]);
     const tempTaskItem = currentListItem.tasks.filter((eachTask) => eachTask.id === id);
-    setcurrentTaskItem(tempTaskItem[0]);
+    setcurrentTaskItem(()=>tempTaskItem[0]);
     setCurrentStatePage('EditTaskItem')
 }
 
