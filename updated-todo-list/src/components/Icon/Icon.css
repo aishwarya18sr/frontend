@@ -1,0 +1,41 @@
+.iconContainer {
+    padding:0px;
+    margin-left:0px;
+    width:20px;
+    height:10px;
+}
+
+.commonIcon {
+    padding:0px;
+    margin-left: max(340px,100%);
+    width:20px;
+    height:20px; 
+    margin-top:25px;
+    background-color: rgb(223, 207, 238);
+    border:0px;
+    color:grey;
+}
+
+.commonIcon:hover {
+    background-color: white;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .iconContainer {
+        padding:0px;
+        margin-left:10px;
+        width:20px;
+        height:10px;
+    }
+    .commonIcon {
+        padding:0px;
+        margin-left: 0px;
+        width:20px;
+        height:20px; 
+        margin-top:25px;
+        background-color: rgb(223, 207, 238);
+        border:0px;
+        color:grey; 
+    }
+}
