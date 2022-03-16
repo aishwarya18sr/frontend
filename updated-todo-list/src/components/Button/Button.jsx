@@ -1,36 +1,40 @@
-import './Button.css'
-import {faPlus, faPencil} from '@fortawesome/free-solid-svg-icons';
+import './Button.css';
+import React from 'react';
+import { faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
-const Button = ({icon, text, onClick}) => {
-    const getIcon = () => {
-        if(icon==='plus') {       
-            return <FontAwesomeIcon className='buttonPlus' icon={faPlus} />
-        }
-        else if(icon==='pencil') {
-            return <FontAwesomeIcon className='buttonPencil' icon={faPencil} />
-        }
-        else {
-            return
-        };
+function Button({ icon, text, onClick }) {
+  const getIcon = () => {
+    if (icon === 'plus') {
+      return <FontAwesomeIcon className="buttonPlus" icon={faPlus} />;
     }
-
-    const getText = () => {
-        if(text===null) {
-            return
-        }
-        return <p className='buttonText'>{text}</p>
+    if (icon === 'pencil') {
+      return <FontAwesomeIcon className="buttonPencil" icon={faPencil} />;
     }
+    return null;
+  };
 
-    function clickHandler(event) {
-            onClick();
-    }
+  const getText = () => <p className="buttonText">{text}</p>;
 
-    return (
-        <div className="buttonContainer">
-            <button className='commonbutton' data-testid="createButton" onClick={clickHandler}>{getIcon()}{getText()}</button>
-        </div>
-    )
+  function clickHandler() {
+    onClick();
+  }
+
+  return (
+    <div className="buttonContainer">
+      <button className="commonbutton" data-testid="createButton" type="submit" onClick={clickHandler}>
+        {getIcon()}
+        {getText()}
+      </button>
+    </div>
+  );
 }
+
+Button.propTypes = {
+  icon: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Button;
