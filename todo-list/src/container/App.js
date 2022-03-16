@@ -3,6 +3,7 @@ import List from '../components/List/List';
 import Task from '../components/Task/Task';
 import NewOrUpdateItem from '../components/NewOrUpdateItem/NewOrUpdateItem';
 import {useState} from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const initialLists = [
   {
@@ -204,6 +205,12 @@ function App() {
             <NewOrUpdateItem title='Update Task' initialItemValue={currentTaskItem.name} onSubmitClick={editTaskItemHandler} onCancelClick={changeStateHandler} previousPage='Task'></NewOrUpdateItem> :
             <></>
         }
+        {/* <BrowserRouter>
+            <Routes>
+                <Route path="/list" element={ <List lists={currentList} onChangeState={changeStateHandler} onMoveToTask={moveToTaskHandler}></List>}></Route>
+                <Route path="*" element={<div>Page not found</div>}></Route>
+            </Routes>
+        </BrowserRouter> */}
     </div>
   );
 }

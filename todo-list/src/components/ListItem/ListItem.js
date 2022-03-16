@@ -1,4 +1,5 @@
 import './ListItem.css'
+import {Link} from "react-router-dom"
 
 const ListItem = (props) => {
     const clickHandler = (event) => {
@@ -6,9 +7,11 @@ const ListItem = (props) => {
             props.onClick(props.id);
     }
     return (
-        <div className="listItemCard" onClick={clickHandler}>
-            <p className="listItemText">{props.title}</p>
-        </div>
+        // <Link to='/task' key={props.id}>
+            <div className="listItemCard" onClick={clickHandler}>
+                <p className="listItemText">{props.title}</p>
+            </div>
+        // </Link>
     )
 }
 
