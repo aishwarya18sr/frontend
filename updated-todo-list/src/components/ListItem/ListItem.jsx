@@ -8,7 +8,7 @@ const ListItem = ({ id, title }) => {
         <div className="listItemCard" onClick={() => {
             navigate(`${LISTS_ROUTE}/${id}`);
         }}>
-            <p className="listItemText">{title}</p>
+            <p data-testid="listItemText" className="listItemText">{title}</p>
         </div>
     )
 }

@@ -1,21 +1,16 @@
-import {useState} from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-import './CreateTask.css';
+import '../NewOrUpdateItemCard/NewOrUpdateItemCard.css';
 import { LISTS_ROUTE} from "../../constants/routes";
+import NewOrUpdateItemCard from '../NewOrUpdateItemCard/NewOrUpdateItemCard';
 
 const CreateTask = ({listData, setListData}) => {
 
     const navigate = useNavigate();
-    const [taskName, setTaskName] = useState("");
 
     let { listId} = useParams();
     listId = parseInt(listId);
 
-    const inputHandler = (event) => {
-        setTaskName(event.target.value);
-    }
-
-    const createTaskItemHandler = () => {
+    const createTaskItemHandler = (taskName) => {
         const modifiedList = listData.map((eachList) => {
           if(eachList.id !== listId) {
             return eachList;
@@ -37,22 +32,14 @@ const CreateTask = ({listData, setListData}) => {
          navigate(`${LISTS_ROUTE}/${listId}`);
       }
 
-
-    const cancelClickHandler = (event) => {
+      
+      const cancelClickHandler = (event) => {
         navigate(-1);
     }
+      
 
     return (
-        <div className="newOrUpdateItem">  
-            <div className='itemInputFields'>     
-                <p className="itemTitle">Add Task</p>
-                <input className="itemName" type="text" value={taskName} onChange={inputHandler}></input>
-                <div className="itemButtonContainer">
-                    <button className="itemSubmit" onClick={createTaskItemHandler}>Submit</button>
-                    <button className="itemCancel" onClick={cancelClickHandler}>Cancel</button>
-                </div>
-            </div>
-        </div>
+      <NewOrUpdateItemCard title="Add Task" initialValue="" submitClickHandler={createTaskItemHandler} cancelClickHandler={cancelClickHandler}></NewOrUpdateItemCard>
     )
 }
 

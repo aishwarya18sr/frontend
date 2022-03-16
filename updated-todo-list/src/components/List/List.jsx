@@ -10,7 +10,7 @@ const List = ({listData}) => {
     const navigate = useNavigate();
 
     const getHeading = () => {
-        return <p className="listHeading">{(listData.length!==0) ? ((listData.length===1) ? 'AVALILABLE LIST' : 'AVAILABLE LISTS') : 'NO LISTS AVAILABLE'}</p> ;
+        return <p data-testid="listHeading" className="listHeading">{(listData.length!==0) ? ((listData.length===1) ? 'AVALILABLE LIST' : 'AVAILABLE LISTS') : 'NO LISTS AVAILABLE'}</p> ;
     }
     
     const allLists = listData.map((eachList) => {

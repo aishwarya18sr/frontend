@@ -10,7 +10,6 @@ import { LISTS_ROUTE, TASKS_ROUTE } from "../constants/routes";
 
 
 function App() {
-
   const [listData, setListData] = useState(LISTS);
 
   return (

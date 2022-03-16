@@ -1,23 +1,21 @@
-import {useState} from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-import './EditTask.css';
+import '../NewOrUpdateItemCard/NewOrUpdateItemCard.css';
 import { LISTS_ROUTE} from "../../constants/routes";
+import NewOrUpdateItemCard from "../NewOrUpdateItemCard/NewOrUpdateItemCard";
+import { useState } from "react";
 
 const EditTask = ({listData, setListData}) => {
 
     const navigate = useNavigate();
+    
 
     let { listId, taskId } = useParams();
     listId = parseInt(listId);
     taskId = parseInt(taskId);
 
-    const [taskName, setTaskName] = useState(listData[listId-1].tasks[taskId-1].name);
+    const [initialTaskName, setInitialTaskName] = useState(listData[listId-1].tasks[taskId-1].name);
 
-    const inputHandler = (event) => {
-        setTaskName(event.target.value);
-    }
-
-      const editTaskItemHandler = () => {
+      const editTaskItemHandler = (taskName) => {
         const modifiedList = listData.map((eachList) => {
           if(eachList.id !== listId) {
             return eachList;
@@ -46,21 +44,12 @@ const EditTask = ({listData, setListData}) => {
          navigate(`${LISTS_ROUTE}/${listId}`);
       }
 
-    const cancelClickHandler = (event) => {
+      const cancelClickHandler = (event) => {
         navigate(-1);
     }
 
     return (
-        <div className="newOrUpdateItem">  
-            <div className='itemInputFields'>     
-                <p className="itemTitle">Update Task</p>
-                <input className="itemName" type="text" value={taskName} onChange={inputHandler}></input>
-                <div className="itemButtonContainer">
-                    <button className="itemSubmit" onClick={editTaskItemHandler}>Submit</button>
-                    <button className="itemCancel" onClick={cancelClickHandler}>Cancel</button>
-                </div>
-            </div>
-        </div>
+      <NewOrUpdateItemCard title='Update Task' initialValue={initialTaskName} submitClickHandler={editTaskItemHandler} cancelClickHandler={cancelClickHandler}></NewOrUpdateItemCard>
     )
 }
 

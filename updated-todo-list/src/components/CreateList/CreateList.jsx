@@ -1,19 +1,14 @@
-import {useState} from 'react';
 import { useNavigate} from "react-router-dom";
-import './CreateList.css';
+import '../NewOrUpdateItemCard/NewOrUpdateItemCard.css';
 import { LISTS_ROUTE} from "../../constants/routes";
+import NewOrUpdateItemCard from '../NewOrUpdateItemCard/NewOrUpdateItemCard';
 
 const CreateList = ({listData, setListData}) => {
 
     const navigate = useNavigate();
-    const [listName, setListName] = useState("");
 
 
-    const inputHandler = (event) => {
-        setListName(event.target.value);
-    }
-
-    const addListHandler = (event) => {
+    const addListHandler = (listName) => {
         const newListItem = {
             id: listData.length + 1,
             listName: listName,
@@ -28,16 +23,7 @@ const CreateList = ({listData, setListData}) => {
     }
 
     return (
-        <div className="newOrUpdateItem">  
-            <div className='itemInputFields'>     
-                <p className="itemTitle">Add List</p>
-                <input className="itemName" type="text" value={listName} onChange={inputHandler}></input>
-                <div className="itemButtonContainer">
-                    <button className="itemSubmit" onClick={addListHandler}>Submit</button>
-                    <button className="itemCancel" onClick={cancelClickHandler}>Cancel</button>
-                </div>
-            </div>
-        </div>
+        <NewOrUpdateItemCard title='Add List' initialValue="" submitClickHandler={addListHandler} cancelClickHandler={cancelClickHandler}></NewOrUpdateItemCard>
     )
 }
 
