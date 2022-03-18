@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './NewOrUpdateItemCard.css';
 import PropTypes from 'prop-types';
+import makeRequest from '../../utils/makeRequest';
+import { getTaskUrl } from '../../constants/apiEndPoints';
 
 function NewOrUpdateItemCard({
-  title, initialValue, submitClickHandler, cancelClickHandler,
+  title, oldTask, submitClickHandler, cancelClickHandler,
 }) {
-  const [itemName, setItemName] = useState(initialValue);
+  const [itemName, setItemName] = useState('');
+  const [isOldTaskTitleLoaded, setIsOldTaskTitleLoaded] = useState(false);
+
+  const loadOldTaskTitle = (response) => {
+    const requiredTask = response.toDoTask.filter((eachTask) => eachTask.id === oldTask.taskId);
+    setItemName(requiredTask[0].name);
+    setIsOldTaskTitleLoaded(true);
+  };
+
+  useEffect(() => {
+    if (title === 'Update Task' && !isOldTaskTitleLoaded) {
+      makeRequest(getTaskUrl(oldTask.listId)).then((response) => {
+        loadOldTaskTitle(response);
+      });
+    }
+  }, [isOldTaskTitleLoaded]);
 
   const inputHandler = (event) => {
     setItemName(event.target.value);
@@ -35,9 +52,16 @@ function NewOrUpdateItemCard({
 
 NewOrUpdateItemCard.propTypes = {
   title: PropTypes.string.isRequired,
-  initialValue: PropTypes.string.isRequired,
+  oldTask: PropTypes.shape({
+    listId: PropTypes.number,
+    taskId: PropTypes.number,
+  }),
   submitClickHandler: PropTypes.func.isRequired,
   cancelClickHandler: PropTypes.func.isRequired,
+};
+
+NewOrUpdateItemCard.defaultProps = {
+  oldTask: {},
 };
 
 export default NewOrUpdateItemCard;

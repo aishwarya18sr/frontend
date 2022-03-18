@@ -15,18 +15,19 @@ function Task() {
   const [taskData, setTaskData] = useState([]);
   const [listTitle, setListTitle] = useState('');
 
-  useEffect(() => {
-    const loadTaskData = (response) => {
-      setListTitle(response.toDoTask[0].listName);
-      setTaskData(response.toDoTask[0].Tasks);
-    };
+  const loadTaskData = (response) => {
+    if (response.toDoTask !== 'No records found') {
+      setListTitle(response.toDoTask[0].List.listName);
+      setTaskData(response.toDoTask);
+    }
+  };
 
+  useEffect(() => {
     if (!isTaskDataLoaded) {
-      const taskUrl = getTaskUrl(listId);
-      makeRequest(taskUrl).then((res) => { loadTaskData(res); });
+      makeRequest(getTaskUrl(listId)).then((response) => { loadTaskData(response); });
       setIsTaskDataLoaded(true);
     }
-  }, [isTaskDataLoaded]);
+  }, [taskData]);
 
   return (
     <div className="taskContainer">

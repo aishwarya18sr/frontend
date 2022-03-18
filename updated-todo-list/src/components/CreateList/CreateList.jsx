@@ -19,7 +19,7 @@ function CreateList() {
   };
 
   return (
-    <NewOrUpdateItemCard title="Add List" initialValue="" submitClickHandler={addListHandler} cancelClickHandler={cancelClickHandler} />
+    <NewOrUpdateItemCard title="Add List" submitClickHandler={addListHandler} cancelClickHandler={cancelClickHandler} />
   );
 }
 

@@ -14,3 +14,13 @@ export const CREATE_NEW_LIST_URL = {
   url: 'lists/',
   method: 'post',
 };
+
+export const CREATE_NEW_TASK_URL = (listId) => ({
+  url: `tasks/${listId}`,
+  method: 'post',
+});
+
+export const EDIT_TASK_URL = (taskId) => ({
+  url: `tasks/${taskId}`,
+  method: 'patch',
+});

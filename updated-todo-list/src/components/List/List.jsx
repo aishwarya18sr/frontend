@@ -13,15 +13,13 @@ function List() {
   const [isListDataLoaded, setIsListDataLoaded] = useState(false);
   const [listData, setListData] = useState([]);
 
-  const loadListData = (response) => {
-    setListData(response.toDoList);
-  };
   useEffect(() => {
     if (!isListDataLoaded) {
-      makeRequest(LIST_URL).then((response) => { loadListData(response); });
+      makeRequest(LIST_URL).then((response) => { setListData(response.toDoList); });
       setIsListDataLoaded(true);
     }
-  }, [isListDataLoaded]);
+  }, [listData]);
+
   const getHeading = () => {
     if (listData.length === 0) {
       return <p data-testid="listHeading" className="listHeading">NO LISTS AVAILABLE</p>;
