@@ -1,20 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import '../NewOrUpdateItemCard/NewOrUpdateItemCard.css';
-import PropTypes from 'prop-types';
 import { LISTS_ROUTE } from '../../constants/routes';
 import NewOrUpdateItemCard from '../NewOrUpdateItemCard/NewOrUpdateItemCard';
+import makeRequest from '../../utils/makeRequest';
+import { CREATE_NEW_LIST_URL } from '../../constants/apiEndPoints';
 
-function CreateList({ listData, setListData }) {
+function CreateList() {
   const navigate = useNavigate();
 
-  const addListHandler = (listName) => {
-    const newListItem = {
-      id: listData.length + 1,
-      listName,
-      tasks: [],
-    };
-    setListData((previousList) => [...previousList, newListItem]);
+  const addListHandler = async (listName) => {
+    await makeRequest(CREATE_NEW_LIST_URL, { data: { name: listName } });
     navigate(`${LISTS_ROUTE}`, { replace: true });
   };
 
@@ -26,17 +22,5 @@ function CreateList({ listData, setListData }) {
     <NewOrUpdateItemCard title="Add List" initialValue="" submitClickHandler={addListHandler} cancelClickHandler={cancelClickHandler} />
   );
 }
-
-CreateList.propTypes = {
-  listData: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    listName: PropTypes.string.isRequired,
-    tasks: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })),
-  })).isRequired,
-  setListData: PropTypes.func.isRequired,
-};
 
 export default CreateList;

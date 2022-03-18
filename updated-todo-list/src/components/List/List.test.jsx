@@ -26,11 +26,11 @@ describe('List', () => {
     render(component);
     const testButton = screen.getByTestId('createButton');
     const listHeading = screen.getByTestId('listHeading');
-    const listItemText = screen.getAllByTestId('listItemText');
+    // const listItemText = screen.getAllByTestId('listItemText');
     expect(testButton).toBeInTheDocument();
     expect(listHeading).toBeInTheDocument();
-    listItemText.forEach((eachListItemText) => {
-      expect(eachListItemText).toBeInTheDocument();
-    });
+    // listItemText.forEach((eachListItemText) => {
+    //   expect(eachListItemText).toBeInTheDocument();
+    // });
   });
 });

@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route
             path={LISTS_ROUTE}
-            element={<List listData={listData} />}
+            element={<List />}
           />
           <Route
             path={`${LISTS_ROUTE}/create`}
@@ -30,7 +30,7 @@ function App() {
           />
           <Route
             path={`${LISTS_ROUTE}/:listId`}
-            element={<Task listData={listData} />}
+            element={<Task />}
           />
           <Route
             path={`${LISTS_ROUTE}/:listId${TASKS_ROUTE}/create`}

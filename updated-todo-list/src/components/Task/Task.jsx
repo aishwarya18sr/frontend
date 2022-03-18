@@ -1,16 +1,32 @@
 /* eslint-disable max-len */
 import { useNavigate, useParams } from 'react-router-dom';
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import TaskItem from '../TaskItem/TaskItem';
 import Button from '../Button/Button';
 import { LISTS_ROUTE, TASKS_ROUTE } from '../../constants/routes';
 import './Task.css';
+import { getTaskUrl } from '../../constants/apiEndPoints';
+import makeRequest from '../../utils/makeRequest';
 
-function Task({ listData }) {
+function Task() {
   const navigate = useNavigate();
   const { listId } = useParams();
-  const allTasks = listData[listId - 1].tasks.map((eachTask) => <TaskItem key={eachTask.id} id={eachTask.id} text={eachTask.name} />);
+  const [isTaskDataLoaded, setIsTaskDataLoaded] = useState(false);
+  const [taskData, setTaskData] = useState([]);
+  const [listTitle, setListTitle] = useState('');
+
+  useEffect(() => {
+    const loadTaskData = (response) => {
+      setListTitle(response.toDoTask[0].listName);
+      setTaskData(response.toDoTask[0].Tasks);
+    };
+
+    if (!isTaskDataLoaded) {
+      const taskUrl = getTaskUrl(listId);
+      makeRequest(taskUrl).then((res) => { loadTaskData(res); });
+      setIsTaskDataLoaded(true);
+    }
+  }, [isTaskDataLoaded]);
 
   return (
     <div className="taskContainer">
@@ -24,24 +40,13 @@ function Task({ listData }) {
         />
       </div>
       <main className="taskMain">
-        <p className="taskText">{listData[listId - 1].listName}</p>
+        <p className="taskText">{listTitle}</p>
         <div className="taskItemContainer">
-          {allTasks}
+          {(taskData.length !== 0) ? taskData.map((eachTask) => <TaskItem key={eachTask.id} id={eachTask.id} text={eachTask.name} />) : <p />}
         </div>
       </main>
     </div>
   );
 }
-
-Task.propTypes = {
-  listData: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    listName: PropTypes.string.isRequired,
-    tasks: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })),
-  })).isRequired,
-};
 
 export default Task;

@@ -1,15 +1,27 @@
 /* eslint-disable max-len */
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import ListItem from '../ListItem/ListItem';
 import Button from '../Button/Button';
 import { LISTS_ROUTE } from '../../constants/routes';
 import './List.css';
+import makeRequest from '../../utils/makeRequest';
+import { LIST_URL } from '../../constants/apiEndPoints';
 
-function List({ listData }) {
+function List() {
   const navigate = useNavigate();
+  const [isListDataLoaded, setIsListDataLoaded] = useState(false);
+  const [listData, setListData] = useState([]);
 
+  const loadListData = (response) => {
+    setListData(response.toDoList);
+  };
+  useEffect(() => {
+    if (!isListDataLoaded) {
+      makeRequest(LIST_URL).then((response) => { loadListData(response); });
+      setIsListDataLoaded(true);
+    }
+  }, [isListDataLoaded]);
   const getHeading = () => {
     if (listData.length === 0) {
       return <p data-testid="listHeading" className="listHeading">NO LISTS AVAILABLE</p>;
@@ -45,16 +57,5 @@ function List({ listData }) {
     </div>
   );
 }
-
-List.propTypes = {
-  listData: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    listName: PropTypes.string.isRequired,
-    tasks: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })),
-  })).isRequired,
-};
 
 export default List;
