@@ -8,21 +8,19 @@ function NewOrUpdateItemCard({
   title, oldTask, submitClickHandler, cancelClickHandler,
 }) {
   const [itemName, setItemName] = useState('');
-  const [isOldTaskTitleLoaded, setIsOldTaskTitleLoaded] = useState(false);
 
   const loadOldTaskTitle = (response) => {
     const requiredTask = response.toDoTask.filter((eachTask) => eachTask.id === oldTask.taskId);
     setItemName(requiredTask[0].name);
-    setIsOldTaskTitleLoaded(true);
   };
 
   useEffect(() => {
-    if (title === 'Update Task' && !isOldTaskTitleLoaded) {
+    if (title === 'Update Task') {
       makeRequest(getTaskUrl(oldTask.listId)).then((response) => {
         loadOldTaskTitle(response);
       });
     }
-  }, [isOldTaskTitleLoaded]);
+  }, []);
 
   const inputHandler = (event) => {
     setItemName(event.target.value);

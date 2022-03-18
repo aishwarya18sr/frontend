@@ -11,7 +11,6 @@ import makeRequest from '../../utils/makeRequest';
 function Task() {
   const navigate = useNavigate();
   const { listId } = useParams();
-  const [isTaskDataLoaded, setIsTaskDataLoaded] = useState(false);
   const [taskData, setTaskData] = useState([]);
   const [listTitle, setListTitle] = useState('');
 
@@ -23,11 +22,8 @@ function Task() {
   };
 
   useEffect(() => {
-    if (!isTaskDataLoaded) {
-      makeRequest(getTaskUrl(listId)).then((response) => { loadTaskData(response); });
-      setIsTaskDataLoaded(true);
-    }
-  }, [taskData]);
+    makeRequest(getTaskUrl(listId)).then((response) => { loadTaskData(response); });
+  }, []);
 
   return (
     <div className="taskContainer">

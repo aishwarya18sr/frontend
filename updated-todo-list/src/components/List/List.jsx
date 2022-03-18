@@ -10,15 +10,11 @@ import { LIST_URL } from '../../constants/apiEndPoints';
 
 function List() {
   const navigate = useNavigate();
-  const [isListDataLoaded, setIsListDataLoaded] = useState(false);
   const [listData, setListData] = useState([]);
 
   useEffect(() => {
-    if (!isListDataLoaded) {
-      makeRequest(LIST_URL).then((response) => { setListData(response.toDoList); });
-      setIsListDataLoaded(true);
-    }
-  }, [listData]);
+    makeRequest(LIST_URL).then((response) => { setListData(response.toDoList); });
+  }, []);
 
   const getHeading = () => {
     if (listData.length === 0) {
