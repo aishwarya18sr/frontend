@@ -3,7 +3,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import EditTask from './EditTask';
 import { LISTS_ROUTE, TASKS_ROUTE } from '../../constants/routes';
-import { MOCK_LISTS } from '../Mocks/lists';
+import MOCK_LISTS from '../../Mocks/lists';
 
 describe('EditTask', () => {
   const mockSetListData = jest.fn();

@@ -9,15 +9,15 @@ describe('Button', () => {
   });
   it('should call the onclick function on clicking the button', () => {
     render(<Button icon="plus" text="CREATE LIST" onClick={clickHandlerMock} />);
-    const testButton = screen.getByTestId('createButton');
-    expect(testButton).toBeInTheDocument();
-    fireEvent.click(testButton);
+    expect(screen.queryByTestId('createButton')).toBeTruthy();
+    expect(screen.getByText('CREATE LIST')).toBeTruthy();
+    expect(screen.getByTestId('plusIcon')).toBeTruthy();
+    fireEvent.click(screen.getByTestId('createButton'));
     expect(clickHandlerMock).toHaveBeenCalledTimes(1);
   });
   it('should not call the onclick function without clicking the button', () => {
     render(<Button icon="plus" text="CREATE LIST" onClick={clickHandlerMock} />);
-    const testButton = screen.getByTestId('createButton');
-    expect(testButton).toBeInTheDocument();
+    expect(screen.queryByTestId('createButton')).toBeTruthy();
     expect(clickHandlerMock).toHaveBeenCalledTimes(0);
   });
 });

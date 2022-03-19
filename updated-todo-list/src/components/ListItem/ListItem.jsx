@@ -12,7 +12,7 @@ function ListItem({ id, title }) {
     navigate(`${LISTS_ROUTE}/${id}`);
   };
   return (
-    <div className="listItemCard" onClick={clickHandler}>
+    <div data-testid="listItemCard" className="listItemCard" onClick={clickHandler}>
       <p data-testid="listItemText" className="listItemText">{title}</p>
     </div>
   );

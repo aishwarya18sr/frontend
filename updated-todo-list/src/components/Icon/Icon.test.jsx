@@ -9,15 +9,14 @@ describe('Icon', () => {
   });
   it('should call the onclick function on clicking the icon', () => {
     render(<Icon icon="pencil" onClick={clickHandlerMock} />);
-    const testButton = screen.getByTestId('editIcon');
-    expect(testButton).toBeInTheDocument();
-    fireEvent.click(testButton);
+    expect(screen.queryByTestId('editIcon')).toBeTruthy();
+    expect(screen.queryByTestId('pencilIcon')).toBeTruthy();
+    fireEvent.click(screen.getByTestId('editIcon'));
     expect(clickHandlerMock).toHaveBeenCalledTimes(1);
   });
   it('should not call the onclick function without clicking the icon', () => {
     render(<Icon icon="pencil" onClick={clickHandlerMock} />);
-    const testButton = screen.getByTestId('editIcon');
-    expect(testButton).toBeInTheDocument();
+    expect(screen.queryByTestId('editIcon')).toBeTruthy();
     expect(clickHandlerMock).toHaveBeenCalledTimes(0);
   });
 });

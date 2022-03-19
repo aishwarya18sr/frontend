@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 function Icon({ icon, onClick }) {
   const getIcon = () => {
     if (icon === 'pencil') {
-      return <FontAwesomeIcon className="buttonPencil" icon={faPencil} />;
+      return <FontAwesomeIcon data-testid="pencilIcon" className="buttonPencil" icon={faPencil} />;
     }
     return null;
   };
