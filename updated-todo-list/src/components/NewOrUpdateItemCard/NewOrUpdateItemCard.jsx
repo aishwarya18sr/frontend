@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './NewOrUpdateItemCard.css';
 import PropTypes from 'prop-types';
 import makeRequest from '../../utils/makeRequest/makeRequest';
