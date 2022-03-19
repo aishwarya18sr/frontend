@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import TaskItem from '../TaskItem/TaskItem';
-import Button from '../Button/Button';
+import TaskItem from '../../components/TaskItem/TaskItem';
+import Button from '../../components/Button/Button';
 import { LISTS_ROUTE, TASKS_ROUTE } from '../../constants/routes';
 import './Task.css';
 import { getTaskUrl } from '../../constants/apiEndPoints';
-import makeRequest from '../../utils/makeRequest';
+import makeRequest from '../../utils/makeRequest/makeRequest';
 
 function Task() {
   const navigate = useNavigate();

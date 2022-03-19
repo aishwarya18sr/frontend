@@ -3,7 +3,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import List from './List';
 import { LISTS_ROUTE } from '../../constants/routes';
-import { MOCK_LISTS } from '../Mocks/lists';
+import MOCK_LISTS from '../../Mocks/lists';
 
 describe('List', () => {
   const mockSetListData = jest.fn();

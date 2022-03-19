@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
-import '../NewOrUpdateItemCard/NewOrUpdateItemCard.css';
+import '../../components/NewOrUpdateItemCard/NewOrUpdateItemCard.css';
 import { LISTS_ROUTE } from '../../constants/routes';
-import NewOrUpdateItemCard from '../NewOrUpdateItemCard/NewOrUpdateItemCard';
-import makeRequest from '../../utils/makeRequest';
+import NewOrUpdateItemCard from '../../components/NewOrUpdateItemCard/NewOrUpdateItemCard';
+import makeRequest from '../../utils/makeRequest/makeRequest';
 import { EDIT_TASK_URL } from '../../constants/apiEndPoints';
 
 function EditTask() {

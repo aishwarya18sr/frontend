@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import ListItem from '../ListItem/ListItem';
-import Button from '../Button/Button';
+import ListItem from '../../components/ListItem/ListItem';
+import Button from '../../components/Button/Button';
 import { LISTS_ROUTE } from '../../constants/routes';
 import './List.css';
-import makeRequest from '../../utils/makeRequest';
+import makeRequest from '../../utils/makeRequest/makeRequest';
 import { LIST_URL } from '../../constants/apiEndPoints';
 
 function List() {

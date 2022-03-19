@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BACKEND_URLS } from '../constants/apiEndPoints';
+import { BACKEND_URLS } from '../../constants/apiEndPoints';
 
 const makeRequest = async (apiEndPoint, dynamicConfig = {}) => {
   const requestDetails = {

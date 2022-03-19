@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import List from '../components/List/List';
-import Task from '../components/Task/Task';
-import CreateList from '../components/CreateList/CreateList';
-import CreateTask from '../components/CreateTask/CreateTask';
-import EditTask from '../components/EditTask/EditTask';
+import List from '../pages/List/List';
+import Task from '../pages/Task/Task';
+import CreateList from '../pages/CreateList/CreateList';
+import CreateTask from '../pages/CreateTask/CreateTask';
+import EditTask from '../pages/EditTask/EditTask';
 import { LISTS_ROUTE, TASKS_ROUTE } from '../constants/routes';
 
 function App() {

@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
-import '../NewOrUpdateItemCard/NewOrUpdateItemCard.css';
+import NewOrUpdateItemCard from '../../components/NewOrUpdateItemCard/NewOrUpdateItemCard';
 import { LISTS_ROUTE } from '../../constants/routes';
-import NewOrUpdateItemCard from '../NewOrUpdateItemCard/NewOrUpdateItemCard';
-import makeRequest from '../../utils/makeRequest';
+import makeRequest from '../../utils/makeRequest/makeRequest';
 import { CREATE_NEW_LIST_URL } from '../../constants/apiEndPoints';
 
 function CreateList() {

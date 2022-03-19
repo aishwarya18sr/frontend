@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './NewOrUpdateItemCard.css';
 import PropTypes from 'prop-types';
-import makeRequest from '../../utils/makeRequest';
+import makeRequest from '../../utils/makeRequest/makeRequest';
 import { getTaskUrl } from '../../constants/apiEndPoints';
 
 function NewOrUpdateItemCard({
