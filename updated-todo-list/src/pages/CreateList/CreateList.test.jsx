@@ -1,9 +1,15 @@
+/* eslint-disable max-len */
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import CreateList from './CreateList';
 import { LISTS_ROUTE } from '../../constants/routes';
-import { MOCK_LISTS } from '../../Mocks/lists';
+import MOCK_LISTS from '../../Mocks/lists';
+
+// jest.mock('../../components/NewOrUpdateItemCard/NewOrUpdateItemCard', () => function () {
+//   function NewOrUpdateItemCard() { return <p data-testid="itemTitle" className="itemTitle">'Create Title'</p>; }
+//   return <NewOrUpdateItemCard />;
+// });
 
 describe('CreateList', () => {
   const mockSetListData = jest.fn();

@@ -1,8 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import NewOrUpdateItemCard from './NewOrUpdateItemCard';
-import * as makeRequest1 from '../../utils/makeRequest/makeRequest';
-import makeRequest from '../../utils/makeRequest/makeRequest';
 
 const mockSubmitHandler = jest.fn();
 
