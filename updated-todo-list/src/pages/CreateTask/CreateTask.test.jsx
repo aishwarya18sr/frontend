@@ -1,38 +1,23 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
 import CreateTask from './CreateTask';
-import { LISTS_ROUTE, TASKS_ROUTE } from '../../constants/routes';
-import MOCK_LISTS from '../../Mocks/lists';
+
+jest.mock('../../utils/makeRequest/makeRequest', () => () => Promise.resolve('Done'));
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  useNavigate: () => mockNavigate,
+  useParams: () => ({ listId: 2 }),
+}));
 
 describe('CreateTask', () => {
   const mockSetListData = jest.fn();
-  const component = (
-    <MemoryRouter initialEntries={[`${LISTS_ROUTE}/:listId${TASKS_ROUTE}/create`]}>
-      <Routes>
-        <Route
-          path={`${LISTS_ROUTE}/:listId`}
-          element={<div>Mock Task Page</div>}
-        />
-        <Route
-          path={`${LISTS_ROUTE}/:listId${TASKS_ROUTE}/create`}
-          element={(
-            <CreateTask
-              listData={MOCK_LISTS}
-              setListData={mockSetListData}
-            />
-)}
-        />
-      </Routes>
-    </MemoryRouter>
-  );
 
   beforeEach(() => {
     mockSetListData.mockClear();
   });
 
   it('should render all the elements and change the input on user typing', () => {
-    render(component);
+    render(<CreateTask />);
     const mockTaskTitle = 'new task';
     const itemTitle = screen.getByTestId('itemTitle');
     const itemName = screen.getByTestId('itemName');
